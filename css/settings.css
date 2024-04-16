@@ -1,11 +1,3 @@
-*,*::after, *::before{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    font-family: system-ui, sans-serif;
-}
 :root{
     --black: #000;
     --info: #4D7EFF;
@@ -15,12 +7,6 @@ body{
     --default: #BDBDBD;
     --toast-bg: #fff;
     --text-black: var(--black);
-}
-/* for test */
-#app{
-    width: 100%;
-    height: 100dvh;
-    background-color: #333;
 }
 .block{
     display: block !important;

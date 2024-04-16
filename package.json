@@ -1,8 +1,14 @@
 {
   "name": "themtfy",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "type": "module",
+  "keywords": [
+    "pure javaScript",
+    "toast",
+    "notification",
+    "themtfy"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,5 +16,25 @@
   },
   "devDependencies": {
     "vite": "^5.2.0"
-  }
+  },
+  "description": "Toast library for pure javaScript",
+  "main": "dist/main.js",
+  "dependencies": {
+    "esbuild": "^0.20.2",
+    "nanoid": "^3.3.7",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.38",
+    "rollup": "^4.14.3",
+    "source-map-js": "^1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmiraliMotahari/themtfy.git"
+  },
+  "author": "Amirali Motahari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AmiraliMotahari/themtfy/issues"
+  },
+  "homepage": "https://github.com/AmiraliMotahari/themtfy#readme"
 }

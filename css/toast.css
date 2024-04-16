@@ -1,4 +1,11 @@
 .toast-container {
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   display: flex;
   width: fit-content;
   flex-flow: column;
@@ -6,6 +13,7 @@
   align-items: center;
   row-gap: 25px;
   position: fixed;
+  font-family: system-ui, sans-serif;
   .toast {
     --icon-size: 40px;
     --col-gap: 8px;
