@@ -6,7 +6,7 @@ import {
   warning_icon,
 } from "./icons";
 
-export default class Toast {
+export default class Themtfy {
   #toastElement;
   #container;
   #autoCloseTimeOut;

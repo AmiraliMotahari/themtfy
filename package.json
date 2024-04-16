@@ -1,7 +1,7 @@
 {
   "name": "themtfy",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "type": "module",
   "keywords": [
     "pure javaScript",
@@ -18,7 +18,10 @@
     "vite": "^5.2.0"
   },
   "description": "Toast library for pure javaScript",
-  "main": "dist/main.js",
+  "main": "dist/themtfy.min.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "esbuild": "^0.20.2",
     "nanoid": "^3.3.7",

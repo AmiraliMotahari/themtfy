@@ -1,4 +1,4 @@
 import "../css/main.css";
-import Toast from "./Toast";
+import Themtfy from "./Themtfy";
 
-export { Toast }
+export { Themtfy };
