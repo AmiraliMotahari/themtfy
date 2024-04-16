@@ -1,0 +1,155 @@
+.toast-container {
+  display: flex;
+  width: fit-content;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 25px;
+  position: fixed;
+  .toast {
+    --icon-size: 40px;
+    --col-gap: 8px;
+    --progressWidth: 1;
+
+    display: flex;
+    width: 320px;
+    /* height: 74px; */
+    flex-flow: row;
+    justify-content: flex-start;
+    align-self: center;
+    padding: 15px 10px;
+    background-color: red;
+    column-gap: var(--col-gap);
+    border-radius: 4px;
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
+    background-color: var(--toast-bg, #fff);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    /* transform: translateX(110%); */
+    transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    .close-btn {
+      display: none;
+      width: 10px;
+      height: 10px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+    .toast-icon {
+      display: flex;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background-color: var(--default, #bdbdbd);
+    }
+    .toast-text-box {
+      display: flex;
+      width: calc(100% - var(--icon-size) - var(--col-gap));
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 8px;
+      .toast-title,
+      .toast-body {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 14px;
+        color: var(--text-black, #000);
+      }
+      .toast-body {
+        font-size: 10px;
+      }
+    }
+    .progressbar {
+      display: block;
+      width: calc(100% * var(--progressWidth));
+      height: 5px;
+      background-color: var(--default, #bdbdbd);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width ease;
+    }
+    &[data-variation="info"] {
+      .toast-icon,
+      .progressbar {
+        background-color: var(--info, #4d7eff);
+      }
+    }
+    &[data-variation="success"] {
+      .toast-icon,
+      .progressbar {
+        background-color: var(--success, #36cb8c);
+      }
+    }
+    &[data-variation="warning"] {
+      .toast-icon,
+      .progressbar {
+        background-color: var(--warning, #ffbc3c);
+      }
+    }
+    &[data-variation="error"] {
+      .toast-icon,
+      .progressbar {
+        background-color: var(--error, #ff4e64);
+      }
+    }
+
+    &.closeable {
+      .close-btn {
+        display: flex;
+      }
+    }
+  }
+
+  &[data-position^="top"] {
+    top: 80px;
+  }
+  &[data-position^="bottom"] {
+    bottom: 80px;
+  }
+  &[data-position$="-right"] {
+    right: 80px;
+    .toast {
+      transform: translateX(110%);
+      &.show {
+        transform: translateX(0);
+      }
+    }
+  }
+  &[data-position$="-left"] {
+    left: 80px;
+    .toast {
+      transform: translateX(-110%);
+      &.show {
+        transform: translateX(0);
+      }
+    }
+  }
+  &[data-position$="-center"] {
+    left: 50%;
+    transform: translateX(-50%);
+    .toast {
+      transform: translateY(110%);
+      &.show {
+        transform: translateY(0);
+      }
+    }
+  }
+  &[data-position^="center"] {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &[data-position="center-center"] {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

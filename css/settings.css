@@ -1,0 +1,36 @@
+*,*::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: system-ui, sans-serif;
+}
+:root{
+    --black: #000;
+    --info: #4D7EFF;
+    --success: #36CB8C;
+    --warning: #FFBC3C;
+    --error: #FF4E64;
+    --default: #BDBDBD;
+    --toast-bg: #fff;
+    --text-black: var(--black);
+}
+/* for test */
+#app{
+    width: 100%;
+    height: 100dvh;
+    background-color: #333;
+}
+.block{
+    display: block !important;
+}
+.none{
+    display: none !important;
+}
+.flex{
+    display: flex !important;
+}
+.w-full{
+    width: 100% !important;
+}
