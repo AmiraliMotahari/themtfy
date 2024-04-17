@@ -15,20 +15,15 @@ You can install Themtfy via npm:
 
 npm install themtfy
 
-
-Or include the script directly in your HTML file:
-
-<script src="path/to/themtfy.js"></script>
-
-// Import Themtfy class
+## Import Themtfy class
 import Themtfy from 'themtfy';
 import "path/to/themtfy/dist/style.css";
 
-// Create a new instance of Themtfy
+## Create a new instance of Themtfy
 const toast = new Themtfy({options});
 
 
-// Options:
+## Options:
     position: "top-right", //default
     title: "Your title goes here",//default
     body: "Your text goes here.", //default

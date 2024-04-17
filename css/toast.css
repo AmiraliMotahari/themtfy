@@ -1,4 +1,6 @@
 .toast-container {
+  --x-distance: 16px;
+  --y-distance: 16px;
   *,
   *::after,
   *::before {
@@ -14,6 +16,7 @@
   row-gap: 25px;
   position: fixed;
   font-family: system-ui, sans-serif;
+  z-index: 99999;
   .toast {
     --icon-size: 40px;
     --col-gap: 8px;
@@ -21,10 +24,9 @@
 
     display: flex;
     width: 320px;
-    /* height: 74px; */
     flex-flow: row;
     justify-content: flex-start;
-    align-self: center;
+    align-items: center;
     padding: 15px 10px;
     background-color: red;
     column-gap: var(--col-gap);
@@ -70,6 +72,7 @@
         text-align: left;
         font-size: 14px;
         color: var(--text-black, #000);
+        line-break: anywhere;
       }
       .toast-body {
         font-size: 10px;
@@ -118,13 +121,13 @@
   }
 
   &[data-position^="top"] {
-    top: 80px;
+    top: var(--x-distance, 16px);
   }
   &[data-position^="bottom"] {
-    bottom: 80px;
+    bottom: var(--x-distance, 16px);
   }
   &[data-position$="-right"] {
-    right: 80px;
+    right: var(--x-distance, 16px);
     .toast {
       transform: translateX(110%);
       &.show {
@@ -133,7 +136,7 @@
     }
   }
   &[data-position$="-left"] {
-    left: 80px;
+    left: var(--x-distance, 16px);
     .toast {
       transform: translateX(-110%);
       &.show {
@@ -159,5 +162,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  @media screen and (max-width: 576px) {
+    --x-distance: 8px;
+    --y-distance: 8px;
   }
 }

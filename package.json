@@ -1,9 +1,11 @@
 {
   "name": "themtfy",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.6",
   "type": "module",
   "keywords": [
+    "pure",
+    "javaScript",
     "pure javaScript",
     "toast",
     "notification",
