@@ -1,8 +1,16 @@
 {
   "name": "themtfy",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
+  "main": "./dist/themtfy.umd.cjs",
+  "module": "./dist/themtfy.js",
+  "exports": {
+    ".": {
+      "import": "./dist/themtfy.min.js",
+      "require": "./dist/themtfy.min.cjs"
+    }
+  },
   "keywords": [
     "pure",
     "javaScript",
@@ -20,7 +28,6 @@
     "vite": "^5.2.0"
   },
   "description": "Toast library for pure javaScript",
-  "main": "dist/themtfy.min.js",
   "files": [
     "dist"
   ],

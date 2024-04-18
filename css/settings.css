@@ -1,22 +1,22 @@
-:root{
-    --black: #000;
-    --info: #4D7EFF;
-    --success: #36CB8C;
-    --warning: #FFBC3C;
-    --error: #FF4E64;
-    --default: #BDBDBD;
-    --toast-bg: #fff;
-    --text-black: var(--black);
+:root {
+  --black: #000;
+  --info: #4d7eff;
+  --success: #36cb8c;
+  --warning: #ffbc3c;
+  --error: #ff4e64;
+  --default: #bdbdbd;
+  --toast-bg: #fff;
+  --text-color: #000;
 }
-.block{
-    display: block !important;
+.block {
+  display: block !important;
 }
-.none{
-    display: none !important;
+.none {
+  display: none !important;
 }
-.flex{
-    display: flex !important;
+.flex {
+  display: flex !important;
 }
-.w-full{
-    width: 100% !important;
+.w-full {
+  width: 100% !important;
 }

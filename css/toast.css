@@ -1,6 +1,6 @@
 .toast-container {
-  --x-distance: 16px;
-  --y-distance: 16px;
+  --distance-x: 16px;
+  --distance-y: 16px;
   *,
   *::after,
   *::before {
@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
   }
+
   display: flex;
   width: fit-content;
   flex-flow: column;
@@ -17,6 +18,7 @@
   position: fixed;
   font-family: system-ui, sans-serif;
   z-index: 99999;
+  box-sizing: border-box;
   .toast {
     --icon-size: 40px;
     --col-gap: 8px;
@@ -36,7 +38,6 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    /* transform: translateX(110%); */
     transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
     .close-btn {
       display: none;
@@ -71,8 +72,7 @@
         width: 100%;
         text-align: left;
         font-size: 14px;
-        color: var(--text-black, #000);
-        line-break: anywhere;
+        color: var(--text-color, #000);
       }
       .toast-body {
         font-size: 10px;
@@ -112,22 +112,20 @@
         background-color: var(--error, #ff4e64);
       }
     }
-
     &.closeable {
       .close-btn {
         display: flex;
       }
     }
   }
-
   &[data-position^="top"] {
-    top: var(--x-distance, 16px);
+    top: var(--distance-y, 16px);
   }
   &[data-position^="bottom"] {
-    bottom: var(--x-distance, 16px);
+    bottom: var(--distance-y, 16px);
   }
   &[data-position$="-right"] {
-    right: var(--x-distance, 16px);
+    right: var(--distance-x, 16px);
     .toast {
       transform: translateX(110%);
       &.show {
@@ -136,7 +134,7 @@
     }
   }
   &[data-position$="-left"] {
-    left: var(--x-distance, 16px);
+    left: var(--distance-x, 16px);
     .toast {
       transform: translateX(-110%);
       &.show {
@@ -164,7 +162,7 @@
     transform: translate(-50%, -50%);
   }
   @media screen and (max-width: 576px) {
-    --x-distance: 8px;
-    --y-distance: 8px;
+    --distance-x: 8px;
+    --distance-y: 8px;
   }
 }

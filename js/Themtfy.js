@@ -24,6 +24,10 @@ export default class Themtfy {
     onClose: () => {},
     canClose: true,
     showProgress: true,
+    backgroundColor: false,
+    textColor: false,
+    distanceX: false,
+    distanceY: false,
   };
   constructor(options = this.#defaultOptions) {
     this.#toastElement = this.#createToastElement();
@@ -33,7 +37,9 @@ export default class Themtfy {
     const def_op = this.#defaultOptions;
     this.update({ ...def_op, ...options });
   }
-
+  /**
+   * @param {string | null} value
+   */
   set position(value = "") {
     const prevContainer = this.#container;
 
@@ -47,12 +53,21 @@ export default class Themtfy {
       this.#containerCheck(prevContainer);
     }
   }
+  /**
+   * @param {string | null} value
+   */
   set body(value) {
     this.#toastElement.querySelector(".toast-body").textContent = value;
   }
+  /**
+   * @param {string | null} value
+   */
   set title(value) {
     this.#toastElement.querySelector(".toast-title").textContent = value;
   }
+  /**
+   * @param {string | boolean} value
+   */
   set icon(value) {
     const iconElement = this.#toastElement.querySelector(".toast-icon");
     if (value === false) {
@@ -74,10 +89,16 @@ export default class Themtfy {
       iconElement.innerHTML = default_icon;
     }
   }
+  /**
+   * @param {string | boolean | undefined} value
+   */
   set variation(value) {
     if (value === false) return;
     this.#toastElement.dataset.variation = value;
   }
+  /**
+   * @param {number | boolean | undefined} value
+   */
   set autoClose(value) {
     this.#autoCloseTime = value;
     this.#timeOrigin = new Date();
@@ -86,6 +107,9 @@ export default class Themtfy {
     if (this.#autoCloseTimeOut) clearTimeout(this.#autoCloseTimeOut);
     this.#autoCloseTimeOut = setTimeout(this.remove, value);
   }
+  /**
+   * @param {boolean | undefined} value
+   */
   set canClose(value) {
     this.#toastElement.classList.toggle("closeable", value);
     if (value) {
@@ -94,6 +118,9 @@ export default class Themtfy {
       this.#toastElement.removeEventListener("click", this.remove);
     }
   }
+  /**
+   * @param {any} value
+   */
   set showProgress(value) {
     if (!value) {
       this.#toastElement.querySelector(".progressbar").remove();
@@ -111,6 +138,34 @@ export default class Themtfy {
         1 - timeVisible / this.#autoCloseTime
       );
     }, 10);
+  }
+  /**
+   * @param {string | null} value
+   */
+  set backgroundColor(value) {
+    if (!value) return;
+    this.#toastElement.style.setProperty("--toast-bg", value);
+  }
+  /**
+   * @param {string | null} value
+   */
+  set textColor(value) {
+    if (!value) return;
+    this.#toastElement.style.setProperty("--text-color", value);
+  }
+  /**
+   * @param {string | null} value
+   */
+  set distanceX(value) {
+    if (!value) return;
+    this.#container.style.setProperty("--distance-x", value);
+  }
+  /**
+   * @param {string | null} value
+   */
+  set distanceY(value) {
+    if (!value) return;
+    this.#container.style.setProperty("--distance-y", value);
   }
   //todo: implement this later
   //   set pauseOnHover(value) {
@@ -144,11 +199,10 @@ export default class Themtfy {
       this.#containerCheck(this.#container);
     });
     this.onClose();
-    
   };
   #containerCheck = (container) => {
-      if (container.hasChildNodes()) return;
-      container.remove();
+    if (container.hasChildNodes()) return;
+    container.remove();
   };
   #createToastElement = () => {
     const toastElement = document.createElement("div");

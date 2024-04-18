@@ -5,8 +5,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "js/main.js"),
-      name: "Themtfy",
+      name: "ThemtfyMin",
       fileName: "themtfy.min",
     },
+
   },
 });
