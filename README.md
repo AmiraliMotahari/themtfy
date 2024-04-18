@@ -17,6 +17,7 @@ npm install themtfy
 
 ## Import Themtfy class
 import Themtfy from 'themtfy';
+
 import "path/to/themtfy/dist/style.css";
 
 ## Create a new instance of Themtfy
@@ -27,11 +28,19 @@ const toast = new Themtfy({options});
     position: "top-right", //default
     title: "Your title goes here",//default
     body: "Your text goes here.", //default
-    icon: "default", "success", "warning", "error", "info"
-    variation: "default", "success", "warning", "error", "info"
+    icon: "default" //default
+    variation: "default" //default
     autoClose: 1000, //time in ms
     onClose: () => {},
     canClose: true, //default
     showProgress: true, //default
+    backgroundColor: false, //default white
+    textColor: false, //default black
+    distanceX: false, //default 16px
+    distanceY: false, //default 16px
 
     all positions values: "top-right", "top-center", "top-left", "center-right", "center-center", "center-left", "bottom-right", "bottom-center", "bottom-left"
+
+    icons: "default", "success", "warning", "error", "info"
+
+    variation: "default", "success", "warning", "error", "info"
