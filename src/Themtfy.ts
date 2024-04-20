@@ -1,4 +1,5 @@
 import {
+  close_icon,
   default_icon,
   error_icon,
   info_icon,
@@ -20,8 +21,8 @@ export default class Themtfy {
   private timeOrigin: Date = new Date();
   private autoCloseTime: number = 0;
   private interval: number = 0;
+  private onClose: Function = ()=>{};
   //   private isPaused = false;
-
   private defaultOptions: ThemtfyOptions = {
     position: "top-right",
     title: "Your title goes here",
@@ -37,6 +38,7 @@ export default class Themtfy {
     distanceX: false,
     distanceY: false,
   };
+
   constructor(
     options: Partial<ThemtfyOptions> = {
       position: "top-right",
@@ -122,11 +124,14 @@ export default class Themtfy {
   }
 
   set canClose(value: boolean) {
-    if (typeof this.canClose !== "boolean") {
+    
+    if (typeof value !== "boolean") {
       return;
     }
-    this.toastElement.classList.toggle("closeable", value);
+    
+    this.toastElement.classList.toggle("closeable", true);
     if (value) {
+      
       this.toastElement.addEventListener("click", this.remove);
     } else {
       this.toastElement.removeEventListener("click", this.remove);
@@ -171,7 +176,7 @@ export default class Themtfy {
     if (!value) return;
     this.container.style.setProperty("--distance-y", value);
   }
-  set onClose(value: Function) {
+  set onCloseHandler(value: Function) {
     if (!value) return;
     this.onClose = value;
   }
@@ -200,35 +205,15 @@ export default class Themtfy {
     });
     this.onClose();
   };
-  containerCheck = (container: HTMLDivElement) => {
+  private containerCheck = (container: HTMLDivElement) => {
     if (container.hasChildNodes()) return;
     container.remove();
   };
-  createToastElement = () => {
+  private createToastElement = () => {
     const toastElement = document.createElement("div");
     toastElement.className = "toast";
     toastElement.innerHTML = `<div class="close-btn">
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(clip0_17_976)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M5.00021 5.58918L7.35729 7.94626C7.43588 8.02216 7.54113 8.06416 7.65038 8.06321C7.75963 8.06226 7.86413 8.01844 7.94139 7.94119C8.01864 7.86393 8.06246 7.75943 8.06341 7.65018C8.06436 7.54093 8.02236 7.43568 7.94646 7.35709L5.58938 5.00001L7.94646 2.64293C8.02236 2.56434 8.06436 2.45909 8.06341 2.34984C8.06246 2.2406 8.01864 2.13609 7.94139 2.05884C7.86413 1.98158 7.75963 1.93776 7.65038 1.93681C7.54113 1.93586 7.43588 1.97786 7.35729 2.05376L5.00021 4.41084L2.64313 2.05376C2.56419 1.97974 2.45955 1.93933 2.35135 1.94109C2.24315 1.94284 2.13987 1.98663 2.06338 2.06318C1.98689 2.13972 1.94318 2.24303 1.9415 2.35123C1.93982 2.45943 1.9803 2.56404 2.05438 2.64293L4.41104 5.00001L2.05396 7.35709C2.01417 7.39553 1.98242 7.44151 1.96059 7.49234C1.93875 7.54318 1.92725 7.59785 1.92677 7.65318C1.92629 7.7085 1.93684 7.76337 1.95779 7.81457C1.97874 7.86578 2.00967 7.9123 2.0488 7.95143C2.08792 7.99055 2.13444 8.02149 2.18565 8.04244C2.23685 8.06339 2.29172 8.07393 2.34704 8.07345C2.40237 8.07297 2.45704 8.06147 2.50788 8.03964C2.55871 8.0178 2.60469 7.98606 2.64313 7.94626L5.00021 5.58918Z"
-                  fill="4F4F4F"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_17_976">
-                  <rect width="10" height="10" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            ${close_icon}
           </div>
           <div class="toast-icon">
             <svg
@@ -258,7 +243,7 @@ export default class Themtfy {
           <div class="progressbar"></div>`;
     return toastElement;
   };
-  createContainer = (value = "top-right") => {
+  private createContainer = (value = "top-right") => {
     const container = document.createElement("div");
     container.className = "toast-container";
     container.dataset.position = value;

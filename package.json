@@ -1,7 +1,7 @@
 {
   "name": "themtfy",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.5",
   "files": [
     "dist"
   ],
@@ -11,8 +11,8 @@
   "module": "./dist/themtfy.js",
   "exports": {
     ".": {
-      "import": "./dist/themtfy.min.js",
-      "require": "./dist/themtfy.min.cjs"
+      "import": "./dist/themtfy.js",
+      "require": "./dist/themtfy.cjs"
     }
   },
   "scripts": {
@@ -24,6 +24,14 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.8.3"
+  },
+  "dependencies": {
+    "esbuild": "^0.20.2",
+    "nanoid": "^3.3.7",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.38",
+    "rollup": "^4.14.3",
+    "source-map-js": "^1.2.0"
   },
   "description": "Toast library for javaScript",
   "repository": {
